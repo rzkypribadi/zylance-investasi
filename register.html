@@ -1,1 +1,66 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYLANCE INVESTASI</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="fade-in">
+    <div class="auth-container">
+        <div class="auth-card scale-in">
+            <div class="logo">
+                <img src="images/logo.png" alt="ZYLANCE INVESTASI">
+                <h2>Daftar Akun Baru</h2>
+            </div>
+            
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Nomor WhatsApp</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="referral">Kode Referral (Opsional)</label>
+                    <input type="text" id="referral" name="referral">
+                </div>
+                
+                <div class="form-group captcha">
+                    <label>Verifikasi Anda Bukan Robot</label>
+                    <div class="captcha-box">
+                        <span id="captchaText"></span>
+                        <button type="button" id="refreshCaptcha">⟳</button>
+                    </div>
+                    <input type="text" id="captchaInput" placeholder="Masukkan kode di atas" required>
+                </div>
+                
+                <div class="form-footer">
+                    <button type="submit" class="btn-primary pulse">Daftar</button>
+                    <p>Sudah punya akun? <a href="login.html">Login disini</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/referral.js"></script>
+</body>
+  </html>
