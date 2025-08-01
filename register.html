@@ -1,40 +1,78 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- Meta informasi dasar -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZYLANCE INVESTASI</title>
+    <title>Zylance Investasi - Daftar</title>
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="css/animations.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/png">
 </head>
-<body class="fade-in">
+<body class="slide-in-right">
+    <!-- Container utama -->
     <div class="auth-container">
-        <div class="auth-card scale-in">
-            <div class="logo">
-                <img src="images/logo.png" alt="ZYLANCE INVESTASI">
-                <h2>Daftar Akun Baru</h2>
+        <!-- Logo perusahaan -->
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Zylance Investasi" class="logo">
+            <h1>Daftar Akun Baru</h1>
+        </div>
+        
+        <!-- Form register -->
+        <form id="registerForm" class="auth-form">
+            <div class="form-group">
+                <label for="registerUsername">Username</label>
+                <input type="text" id="registerUsername" required placeholder="Buat username">
             </div>
             
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Nomor WhatsApp</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" required placeholder="Masukkan email aktif">
+            </div>
+            
+            <div class="form-group">
+                <label for="registerPhone">Nomor WhatsApp</label>
+                <input type="tel" id="registerPhone" required placeholder="Contoh: 081234567890">
+            </div>
+            
+            <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword" required placeholder="Buat password">
+            </div>
+            
+            <div class="form-group">
+                <label for="registerReferral">Kode Referral (Opsional)</label>
+                <input type="text" id="registerReferral" placeholder="Masukkan kode referral jika ada">
+            </div>
+            
+            <!-- CAPTCHA -->
+            <div class="captcha-container">
+                <div class="captcha-box" id="captchaText"></div>
+                <button type="button" class="btn-captcha" id="refreshCaptcha">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <input type="text" id="userCaptcha" required placeholder="Masukkan kode CAPTCHA">
+            </div>
+            
+            <button type="submit" class="btn-primary">Daftar Sekarang</button>
+            
+            <!-- Link ke halaman login -->
+            <div class="auth-footer">
+                Sudah punya akun? <a href="login.html">Login disini</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Skrip JavaScript -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/referral.js"></script>
+</body>
+</html>                    <input type="password" id="password" name="password" required>
                 </div>
                 
                 <div class="form-group">
