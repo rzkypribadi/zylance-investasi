@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Meta informasi dasar -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zylance Investasi</title>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Sidebar navigasi -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="Zylance Investasi" class="logo">
+            <h3>Zylance Investasi</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="deposit.html"><i class="fas fa-wallet"></i> Deposit</a></li>
+            <li class="active"><a href="withdraw.html"><i class="fas fa-money-bill-wave"></i> Withdraw</a></li>
+            <li><a href="invest.html"><i class="fas fa-chart-line"></i> Investasi</a></li>
+            <li><a href="#" id="liveChatBtn"><i class="fas fa-comments"></i> Live Chat</a></li>
+            <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
 
+    <!-- Konten utama -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <h2>Withdraw</h2>
+                <p class="welcome-text">Tarik dana dari akun Anda</p>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="userBalance">Rp 0</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Form withdraw -->
+        <section class="withdraw-section">
+            <div class="withdraw-container">
+                <h3><i class="fas fa-money-bill-wave"></i> Penarikan Dana</h3>
+                <p id="minWithdrawText">Minimal withdraw: Rp 700.000</p>
+                
+                <form id="withdrawForm">
+                    <div class="form-group">
+                        <label for="withdrawMethod">Metode Penarikan</label>
+                        <select id="withdrawMethod" required>
+                            <option value="">Pilih metode</option>
+                            <option value="ewallet">E-Wallet</option>
+                            <option value="bank">Bank Transfer</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="paymentMethodGroup" style="display: none;">
+                        <label for="paymentMethod">Pilih Pembayaran</label>
+                        <select id="paymentMethod" required>
+                            <!-- Opsi akan diisi berdasarkan pilihan metode -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="withdrawAmount">Nominal Withdraw</label>
+                        <input type="number" id="withdrawAmount" required placeholder="Masukkan nominal">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="withdrawPassword">Password Akun</label>
+                        <input type="password" id="withdrawPassword" required placeholder="Masukkan password">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" id="submitWithdraw">Konfirmasi Withdraw</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Riwayat withdraw -->
+        <section class="withdraw-history">
+            <h3><i class="fas fa-history"></i> Riwayat Withdraw</h3>
+            
+            <div class="history-container" id="withdrawHistory">
+                <!-- Daftar riwayat withdraw akan dimuat di sini -->
+                <div class="empty-state">
+                    <i class="fas fa-receipt"></i>
+                    <p>Belum ada riwayat withdraw</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal konfirmasi withdraw -->
+    <div class="modal" id="withdrawModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Konfirmasi Withdraw</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Withdraw Anda akan diproses dalam waktu 1x24 jam. Pastikan data yang Anda masukkan sudah benar.</p>
+                
+                <div class="withdraw-details">
+                    <div class="detail-item">
+                        <span>Metode:</span>
+                        <span id="confirmMethod"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Tujuan:</span>
+                        <span id="confirmPayment"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Nominal:</span>
+                        <span id="confirmAmount"></span>
+                    </div>
+                </div>
+                
+                <button class="btn-primary" id="finalConfirmWithdraw">Konfirmasi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skrip JavaScript -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/withdraw.js"></script>
+</body>
+              </html>
