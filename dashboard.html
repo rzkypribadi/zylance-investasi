@@ -1,40 +1,136 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- Meta informasi dasar -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZYLANCE INVESTASI</title>
+    <title>Dashboard - Zylance Investasi</title>
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/png">
 </head>
 <body>
-    <div class="sidebar slide-in-left">
-        <div class="logo">
-            <img src="images/logo.png" alt="ZYLANCE INVESTASI">
+    <!-- Sidebar navigasi -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="Zylance Investasi" class="logo">
+            <h3>Zylance Investasi</h3>
         </div>
         
-        <nav>
-            <ul>
-                <li class="active"><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="deposit.html"><i class="fas fa-wallet"></i> Deposit</a></li>
-                <li><a href="withdraw.html"><i class="fas fa-money-bill-wave"></i> Withdraw</a></li>
-                <li><a href="invest.html"><i class="fas fa-chart-line"></i> Investasi</a></li>
-                <li><a href="#" id="openChat"><i class="fas fa-comments"></i> Live Chat</a></li>
-                <li><a href="#" id="dailyReward"><i class="fas fa-gift"></i> Claim Reward</a></li>
-                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </nav>
+        <ul class="sidebar-menu">
+            <li class="active"><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="deposit.html"><i class="fas fa-wallet"></i> Deposit</a></li>
+            <li><a href="withdraw.html"><i class="fas fa-money-bill-wave"></i> Withdraw</a></li>
+            <li><a href="invest.html"><i class="fas fa-chart-line"></i> Investasi</a></li>
+            <li><a href="#" id="liveChatBtn"><i class="fas fa-comments"></i> Live Chat</a></li>
+            <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Konten utama -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <h2>Dashboard</h2>
+                <p class="welcome-text">Selamat datang kembali, <span id="usernameDisplay"></span>!</p>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="userBalance">Rp 0</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Bagian saldo dan aksi cepat -->
+        <section class="quick-actions">
+            <div class="balance-card pulse">
+                <h3>Saldo Anda</h3>
+                <p class="balance-amount" id="mainBalance">Rp 0</p>
+                <div class="balance-actions">
+                    <button class="btn-sm btn-primary" onclick="location.href='deposit.html'">Deposit</button>
+                    <button class="btn-sm btn-secondary" onclick="location.href='withdraw.html'">Withdraw</button>
+                </div>
+            </div>
+
+            <div class="action-card">
+                <h3>Reward Harian</h3>
+                <p>Klaim Rp 5.000 setiap hari!</p>
+                <button class="btn-sm btn-success" id="dailyRewardBtn">Klaim Sekarang</button>
+            </div>
+
+            <div class="action-card">
+                <h3>Referral</h3>
+                <p>Dapatkan bonus dari teman Anda</p>
+                <button class="btn-sm btn-info" id="referralBtn">Bagikan Kode</button>
+            </div>
+        </section>
+
+        <!-- Investasi aktif -->
+        <section class="active-investments">
+            <h3><i class="fas fa-chart-line"></i> Investasi Aktif</h3>
+            
+            <div class="investments-container" id="activeInvestments">
+                <!-- Konten investasi aktif akan dimuat di sini -->
+                <div class="empty-state">
+                    <i class="fas fa-box-open"></i>
+                    <p>Anda belum memiliki investasi aktif</p>
+                    <button class="btn-primary" onclick="location.href='invest.html'">Mulai Investasi</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Riwayat transaksi -->
+        <section class="transaction-history">
+            <h3><i class="fas fa-history"></i> Riwayat Transaksi Terakhir</h3>
+            
+            <div class="transactions-container" id="transactionHistory">
+                <!-- Daftar transaksi akan dimuat di sini -->
+                <div class="empty-state">
+                    <i class="fas fa-receipt"></i>
+                    <p>Belum ada riwayat transaksi</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Live Chat -->
+    <div class="modal" id="chatModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Live Chat Support</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="chat-container" id="chatContainer">
+                    <!-- Pesan chat akan muncul di sini -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chatMessage" placeholder="Ketik pesan Anda...">
+                    <button id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="main-content fade-in">
-        <header>
-            <div class="user-info">
-                <img src="https://ui-avatars.com/api/?name=John+Doe" alt="User">
-                <div>
-                    <h4 id="usernameDisplay">John Doe</h4>
-                    <p id="emailDisplay">john@example.com</p>
+
+    <!-- Skrip JavaScript -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/referral.js"></script>
+</body>
+</html>                    <p id="emailDisplay">john@example.com</p>
                 </div>
             </div>
             <div class="notification">
