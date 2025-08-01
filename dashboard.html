@@ -1,1 +1,118 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYLANCE INVESTASI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar slide-in-left">
+        <div class="logo">
+            <img src="images/logo.png" alt="ZYLANCE INVESTASI">
+        </div>
+        
+        <nav>
+            <ul>
+                <li class="active"><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="deposit.html"><i class="fas fa-wallet"></i> Deposit</a></li>
+                <li><a href="withdraw.html"><i class="fas fa-money-bill-wave"></i> Withdraw</a></li>
+                <li><a href="invest.html"><i class="fas fa-chart-line"></i> Investasi</a></li>
+                <li><a href="#" id="openChat"><i class="fas fa-comments"></i> Live Chat</a></li>
+                <li><a href="#" id="dailyReward"><i class="fas fa-gift"></i> Claim Reward</a></li>
+                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="main-content fade-in">
+        <header>
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=John+Doe" alt="User">
+                <div>
+                    <h4 id="usernameDisplay">John Doe</h4>
+                    <p id="emailDisplay">john@example.com</p>
+                </div>
+            </div>
+            <div class="notification">
+                <i class="fas fa-bell"></i>
+                <span class="badge">3</span>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="stats">
+                <div class="stat-card balance">
+                    <h3>Saldo Anda</h3>
+                    <h2 id="balanceAmount">Rp 0</h2>
+                    <div class="actions">
+                        <a href="deposit.html" class="btn-small btn-primary">Deposit</a>
+                        <a href="withdraw.html" class="btn-small btn-secondary">Withdraw</a>
+                    </div>
+                </div>
+                
+                <div class="stat-card referral">
+                    <h3>Program Referral</h3>
+                    <p>Dapatkan bonus dengan mengajak teman</p>
+                    <div class="referral-code">
+                        <p>Kode Referral Anda:</p>
+                        <h4 id="userReferralCode">ZX12345</h4>
+                        <button class="btn-small btn-primary" id="copyReferral">Salin</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="active-investments">
+                <h3>Investasi Aktif</h3>
+                <div class="investments-list" id="activeInvestments">
+                    <!-- Akan diisi oleh JavaScript -->
+                    <div class="empty-state">
+                        <i class="fas fa-box-open"></i>
+                        <p>Anda belum memiliki investasi aktif</p>
+                        <a href="invest.html" class="btn-primary">Mulai Investasi</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recent-transactions">
+                <h3>Transaksi Terakhir</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Jenis</th>
+                            <th>Nominal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsTable">
+                        <!-- Akan diisi oleh JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Live Chat Modal -->
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-header">
+            <h4>Live Chat Support</h4>
+            <button id="closeChat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Pesan akan muncul di sini -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Ketik pesan Anda...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    
+    <script src="js/firebase-config.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+                                                 </html>
