@@ -1,16 +1,26 @@
-<!-- Komponen lonceng notifikasi -->
-<div class="lonceng-notifikasi" id="lonceng-notifikasi">
+<div class="lonceng-notifikasi-wrapper">
+  <div class="lonceng-notifikasi" id="lonceng-notifikasi">
     <i class="fas fa-bell"></i>
-    <span class="hitung-notifikasi" id="hitung-notifikasi"></span>
+    <span class="badge-notifikasi" id="hitung-notifikasi"></span>
     
-    <!-- Dropdown notifikasi -->
-    <div class="dropdown-notifikasi" id="daftar-notifikasi">
-        <div class="header-notifikasi">
-            <h4>Notifikasi Terbaru</h4>
-            <button class="tandai-dibaca">Tandai Sudah Dibaca</button>
+    <div class="dropdown-notifikasi" id="dropdown-notifikasi">
+      <div class="dropdown-header">
+        <h4>Notifikasi Terbaru</h4>
+        <button class="btn-tandai-dibaca" id="btn-tandai-dibaca">
+          <i class="fas fa-check-double"></i> Tandai semua dibaca
+        </button>
+      </div>
+      
+      <div class="daftar-notifikasi" id="daftar-notifikasi">
+        <div class="notifikasi-kosong">
+          <i class="fas fa-bell-slash"></i>
+          <p>Tidak ada notifikasi baru</p>
         </div>
-        <div class="daftar-item" id="item-notifikasi">
-            <!-- Notifikasi akan dimuat secara dinamis -->
-        </div>
+      </div>
+      
+      <div class="dropdown-footer">
+        <a href="/notifikasi" class="lihat-semua">Lihat semua notifikasi →</a>
+      </div>
     </div>
+  </div>
 </div>
