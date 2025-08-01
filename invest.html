@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Meta informasi dasar -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zylance Investasi</title>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Sidebar navigasi -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="Zylance Investasi" class="logo">
+            <h3>Zylance Investasi</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="deposit.html"><i class="fas fa-wallet"></i> Deposit</a></li>
+            <li><a href="withdraw.html"><i class="fas fa-money-bill-wave"></i> Withdraw</a></li>
+            <li class="active"><a href="invest.html"><i class="fas fa-chart-line"></i> Investasi</a></li>
+            <li><a href="#" id="liveChatBtn"><i class="fas fa-comments"></i> Live Chat</a></li>
+            <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
 
+    <!-- Konten utama -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <h2>Paket Investasi</h2>
+                <p class="welcome-text">Pilih paket investasi yang sesuai</p>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="userBalance">Rp 0</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Daftar paket investasi -->
+        <section class="investment-packages">
+            <div class="package-card">
+                <div class="package-header">
+                    <h3>Invest Money Pemula</h3>
+                    <span class="package-price">Rp 150.000</span>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Klaim Rp 70.000/hari</li>
+                        <li><i class="fas fa-check"></i> Jangka waktu 15 hari</li>
+                        <li><i class="fas fa-check"></i> Total yang didapat: Rp 1.050.000</li>
+                    </ul>
+                </div>
+                <div class="package-footer">
+                    <button class="btn-primary invest-btn" data-package="pemula" data-price="150000">Beli Paket</button>
+                </div>
+            </div>
+            
+            <div class="package-card featured">
+                <div class="package-badge">POPULER</div>
+                <div class="package-header">
+                    <h3>Invest Money Sedang</h3>
+                    <span class="package-price">Rp 250.000</span>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Klaim Rp 150.000/hari</li>
+                        <li><i class="fas fa-check"></i> Jangka waktu 20 hari</li>
+                        <li><i class="fas fa-check"></i> Total yang didapat: Rp 3.000.000</li>
+                    </ul>
+                </div>
+                <div class="package-footer">
+                    <button class="btn-primary invest-btn" data-package="sedang" data-price="250000">Beli Paket</button>
+                </div>
+            </div>
+            
+            <div class="package-card">
+                <div class="package-header">
+                    <h3>Invest Money Pro</h3>
+                    <span class="package-price">Rp 350.000</span>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Klaim Rp 200.000/hari</li>
+                        <li><i class="fas fa-check"></i> Jangka waktu 30 hari</li>
+                        <li><i class="fas fa-check"></i> Total yang didapat: Rp 6.000.000</li>
+                    </ul>
+                </div>
+                <div class="package-footer">
+                    <button class="btn-primary invest-btn" data-package="pro" data-price="350000">Beli Paket</button>
+                </div>
+            </div>
+            
+            <div class="package-card">
+                <div class="package-header">
+                    <h3>Invest Money God</h3>
+                    <span class="package-price">Rp 500.000</span>
+                </div>
+                <div class="package-body">
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Klaim Rp 300.000/hari</li>
+                        <li><i class="fas fa-check"></i> Jangka waktu 35 hari</li>
+                        <li><i class="fas fa-check"></i> Total yang didapat: Rp 10.500.000</li>
+                    </ul>
+                </div>
+                <div class="package-footer">
+                    <button class="btn-primary invest-btn" data-package="god" data-price="500000">Beli Paket</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal konfirmasi investasi -->
+    <div class="modal" id="investModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalInvestTitle">Konfirmasi Investasi</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="invest-summary">
+                    <p>Anda akan membeli paket <strong id="packageName"></strong> seharga <strong id="packagePrice"></strong></p>
+                    <p>Saldo Anda: <strong id="currentBalance"></strong></p>
+                </div>
+                
+                <div class="invest-terms">
+                    <label>
+                        <input type="checkbox" id="agreeTerms" required>
+                        Saya setuju dengan syarat dan ketentuan yang berlaku
+                    </label>
+                </div>
+                
+                <button class="btn-primary" id="confirmInvest">Konfirmasi Pembelian</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skrip JavaScript -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/invest.js"></script>
+</body>
+</html>
