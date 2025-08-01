@@ -1,1 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Meta informasi dasar -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Zylance Investasi</title>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Sidebar navigasi admin -->
+    <nav class="sidebar admin-sidebar">
+        <div class="sidebar-header">
+            <img src="../images/logo.png" alt="Zylance Investasi" class="logo">
+            <h3>Admin Panel</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li class="active"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#" id="manageUsersBtn"><i class="fas fa-users"></i> Kelola User</a></li>
+            <li><a href="#" id="manageBalanceBtn"><i class="fas fa-wallet"></i> Kelola Saldo</a></li>
+            <li><a href="#" id="manageInvestmentsBtn"><i class="fas fa-chart-line"></i> Kelola Investasi</a></li>
+            <li><a href="#" id="viewTransactionsBtn"><i class="fas fa-exchange-alt"></i> Transaksi</a></li>
+            <li><a href="#" id="adminChatBtn"><i class="fas fa-comments"></i> Live Chat</a></li>
+            <li><a href="#" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
 
+    <!-- Konten utama admin -->
+    <main class="main-content admin-content">
+        <!-- Header admin -->
+        <header class="main-header admin-header">
+            <div class="header-left">
+                <h2>Admin Dashboard</h2>
+                <p class="welcome-text">Selamat datang, Admin</p>
+            </div>
+            <div class="header-right">
+                <div class="admin-info">
+                    <div class="admin-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Statistik utama -->
+        <section class="admin-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="totalUsers">0</h3>
+                    <p>Total User</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="activeInvestments">0</h3>
+                    <p>Investasi Aktif</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="todayIncome">Rp 0</h3>
+                    <p>Pendapatan Hari Ini</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="totalWithdraw">Rp 0</h3>
+                    <p>Total Withdraw</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grafik dan chart -->
+        <section class="admin-charts">
+            <div class="chart-container">
+                <h3><i class="fas fa-chart-bar"></i> Statistik Pendapatan</h3>
+                <canvas id="incomeChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <h3><i class="fas fa-chart-pie"></i> Distribusi Paket Investasi</h3>
+                <canvas id="packageChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Aktivitas terbaru -->
+        <section class="admin-activity">
+            <h3><i class="fas fa-history"></i> Aktivitas Terbaru</h3>
+            
+            <div class="activity-container" id="recentActivity">
+                <!-- Daftar aktivitas akan dimuat di sini -->
+                <div class="empty-state">
+                    <i class="fas fa-clock"></i>
+                    <p>Belum ada aktivitas terbaru</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Kelola User -->
+    <div class="modal admin-modal" id="usersModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Kelola Pengguna</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="userList">Daftar User</button>
+                    <button class="tab-btn" data-tab="searchUser">Cari User</button>
+                    <button class="tab-btn" data-tab="addUser">Tambah User</button>
+                </div>
+                
+                <div class="tab-content active" id="userList">
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Saldo</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- Data user akan dimuat di sini -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="searchUser">
+                    <div class="form-group">
+                        <input type="text" id="searchUserInput" placeholder="Cari berdasarkan username atau email">
+                        <button class="btn-primary" id="searchUserBtn">Cari</button>
+                    </div>
+                    
+                    <div id="searchResults">
+                        <!-- Hasil pencarian akan muncul di sini -->
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="addUser">
+                    <form id="addUserForm">
+                        <div class="form-group">
+                            <label for="newUsername">Username</label>
+                            <input type="text" id="newUsername" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="newEmail">Email</label>
+                            <input type="email" id="newEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="newPassword">Password</label>
+                            <input type="password" id="newPassword" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Tambah User</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Kelola Saldo -->
+    <div class="modal admin-modal" id="balanceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Kelola Saldo User</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="addBalance">Tambah Saldo</button>
+                    <button class="tab-btn" data-tab="reduceBalance">Kurangi Saldo</button>
+                    <button class="tab-btn" data-tab="setBalance">Set Saldo</button>
+                </div>
+                
+                <div class="tab-content active" id="addBalance">
+                    <form id="addBalanceForm">
+                        <div class="form-group">
+                            <label for="addBalanceUsername">Username</label>
+                            <input type="text" id="addBalanceUsername" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="addBalanceAmount">Jumlah</label>
+                            <input type="number" id="addBalanceAmount" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Tambah Saldo</button>
+                    </form>
+                </div>
+                
+                <div class="tab-content" id="reduceBalance">
+                    <form id="reduceBalanceForm">
+                        <div class="form-group">
+                            <label for="reduceBalanceUsername">Username</label>
+                            <input type="text" id="reduceBalanceUsername" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reduceBalanceAmount">Jumlah</label>
+                            <input type="number" id="reduceBalanceAmount" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Kurangi Saldo</button>
+                    </form>
+                </div>
+                
+                <div class="tab-content" id="setBalance">
+                    <form id="setBalanceForm">
+                        <div class="form-group">
+                            <label for="setBalanceUsername">Username</label>
+                            <input type="text" id="setBalanceUsername" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="setBalanceAmount">Jumlah Baru</label>
+                            <input type="number" id="setBalanceAmount" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Set Saldo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Live Chat Admin -->
+    <div class="modal admin-modal" id="adminChatModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Live Chat Support</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="chat-sidebar">
+                    <h4>Daftar Chat Aktif</h4>
+                    <div class="chat-list" id="adminChatList">
+                        <!-- Daftar user yang mengirim chat -->
+                    </div>
+                </div>
+                
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <h4 id="currentChatUser">Pilih user untuk memulai chat</h4>
+                        <div class="user-status">
+                            <span id="userChatStatus"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="adminChatMessages">
+                        <!-- Pesan chat akan muncul di sini -->
+                    </div>
+                    
+                    <div class="chat-input">
+                        <input type="text" id="adminChatInput" placeholder="Ketik pesan Anda..." disabled>
+                        <button id="adminSendMessageBtn" disabled><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skrip JavaScript -->
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+                                                  </html>
