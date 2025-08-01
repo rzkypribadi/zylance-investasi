@@ -1,1 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Meta informasi dasar -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zylance Investasi</title>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Sidebar navigasi -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="Zylance Investasi" class="logo">
+            <h3>Zylance Investasi</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="deposit.html"><i class="fas fa-wallet"></i> Deposit</a></li>
+            <li><a href="withdraw.html"><i class="fas fa-money-bill-wave"></i> Withdraw</a></li>
+            <li><a href="invest.html"><i class="fas fa-chart-line"></i> Investasi</a></li>
+            <li><a href="#" id="liveChatBtn"><i class="fas fa-comments"></i> Live Chat</a></li>
+            <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
 
+    <!-- Konten utama -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <h2>Pembayaran Deposit</h2>
+                <p class="welcome-text">Selesaikan pembayaran Anda</p>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="userBalance">Rp 0</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Detail pembayaran -->
+        <section class="payment-section">
+            <div class="payment-container">
+                <div class="payment-info">
+                    <h3><i class="fas fa-qrcode"></i> Pembayaran via QRIS</h3>
+                    <p>Silahkan scan QR code berikut untuk melakukan pembayaran</p>
+                    
+                    <div class="payment-amount">
+                        <p>Total Pembayaran:</p>
+                        <h3 id="paymentAmount">Rp 0</h3>
+                    </div>
+                    
+                    <div class="payment-timer">
+                        <p>Batas waktu pembayaran:</p>
+                        <h3 id="paymentTimer">15:00</h3>
+                    </div>
+                </div>
+                
+                <div class="qrcode-container">
+                    <div id="qrcode"></div>
+                    <p class="text-center">Scan QR code di atas menggunakan aplikasi mobile banking atau e-wallet Anda</p>
+                </div>
+                
+                <div class="payment-status">
+                    <div class="status-loading">
+                        <div class="spinner"></div>
+                        <p>Menunggu pembayaran...</p>
+                    </div>
+                    <div class="status-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Pembayaran berhasil! Saldo akan segera ditambahkan</p>
+                        <button class="btn-primary" onclick="location.href='dashboard.html'">Kembali ke Dashboard</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Skrip JavaScript -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/deposit.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</body>
+</html>
