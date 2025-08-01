@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Meta informasi dasar -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Zylance Investasi</title>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/logo.png" type="image/png">
+</head>
+<body class="fade-in">
+    <!-- Container utama -->
+    <div class="auth-container admin-auth">
+        <!-- Logo perusahaan -->
+        <div class="logo-container">
+            <img src="../images/logo.png" alt="Zylance Investasi" class="logo">
+            <h1>Panel Admin</h1>
+        </div>
+        
+        <!-- Form login admin -->
+        <form id="adminLoginForm" class="auth-form">
+            <div class="form-group">
+                <label for="adminUsername">Username</label>
+                <input type="text" id="adminUsername" required placeholder="Masukkan username admin">
+            </div>
+            
+            <div class="form-group">
+                <label for="adminPassword">Password</label>
+                <input type="password" id="adminPassword" required placeholder="Masukkan password admin">
+            </div>
+            
+            <button type="submit" class="btn-primary">Login Admin</button>
+            
+            <!-- Link ke halaman user -->
+            <div class="auth-footer">
+                <a href="../login.html">Login sebagai User</a>
+            </div>
+        </form>
+    </div>
 
+    <!-- Skrip JavaScript -->
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+  </html>
