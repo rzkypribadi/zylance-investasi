@@ -1,1 +1,98 @@
+/* Gaya untuk lonceng notifikasi */
+.lonceng-notifikasi {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #555;
+}
 
+/* Gaya untuk hitungan notifikasi */
+.hitung-notifikasi {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+/* Gaya saat ada notifikasi */
+.lonceng-notifikasi.ada-notifikasi {
+    color: #3498db;
+    animation: bergetar 0.5s ease-in-out;
+}
+
+/* Animasi lonceng */
+@keyframes bergetar {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
+}
+
+/* Gaya untuk dropdown notifikasi */
+.dropdown-notifikasi {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 15px;
+    display: none;
+    z-index: 1000;
+}
+
+/* Tampilkan dropdown saat aktif */
+.lonceng-notifikasi.active .dropdown-notifikasi {
+    display: block;
+}
+
+/* Gaya untuk header notifikasi */
+.header-notifikasi {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Gaya untuk tombol tandai dibaca */
+.tandai-dibaca {
+    background: none;
+    border: none;
+    color: #3498db;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+/* Gaya untuk popup notifikasi */
+.popup-notifikasi {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 1001;
+}
+
+/* Gaya untuk item notifikasi */
+.item-notifikasi {
+    padding: 10px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.item-notifikasi:last-child {
+    border-bottom: none;
+  }
