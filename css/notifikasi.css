@@ -1,98 +1,157 @@
-/* Gaya untuk lonceng notifikasi */
+/* Gaya dasar notifikasi */
+.lonceng-notifikasi-wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 1000;
+}
+
 .lonceng-notifikasi {
-    position: relative;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: #555;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #6c757d;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
 }
 
-/* Gaya untuk hitungan notifikasi */
-.hitung-notifikasi {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: #e74c3c;
-    color: white;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 0.7rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
+.lonceng-notifikasi:hover {
+  color: #495057;
 }
 
-/* Gaya saat ada notifikasi */
-.lonceng-notifikasi.ada-notifikasi {
-    color: #3498db;
-    animation: bergetar 0.5s ease-in-out;
+/* Badge notifikasi */
+.badge-notifikasi {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
-/* Animasi lonceng */
-@keyframes bergetar {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(15deg); }
-    75% { transform: rotate(-15deg); }
-}
-
-/* Gaya untuk dropdown notifikasi */
+/* Dropdown notifikasi */
 .dropdown-notifikasi {
-    position: absolute;
-    right: 0;
-    top: 100%;
-    width: 300px;
-    background-color: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    padding: 15px;
-    display: none;
-    z-index: 1000;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 350px;
+  max-height: 500px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
-/* Tampilkan dropdown saat aktif */
 .lonceng-notifikasi.active .dropdown-notifikasi {
-    display: block;
+  display: flex;
 }
 
-/* Gaya untuk header notifikasi */
-.header-notifikasi {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+/* Header dropdown */
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e9ecef;
+  background-color: #f8f9fa;
 }
 
-/* Gaya untuk tombol tandai dibaca */
-.tandai-dibaca {
-    background: none;
-    border: none;
-    color: #3498db;
-    cursor: pointer;
-    font-size: 0.8rem;
+.dropdown-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #495057;
 }
 
-/* Gaya untuk popup notifikasi */
-.popup-notifikasi {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #3498db;
-    color: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    z-index: 1001;
+.btn-tandai-dibaca {
+  background: none;
+  border: none;
+  color: #0d6efd;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
 }
 
-/* Gaya untuk item notifikasi */
-.item-notifikasi {
-    padding: 10px 0;
-    border-bottom: 1px solid #f5f5f5;
+.btn-tandai-dibaca:hover {
+  text-decoration: underline;
 }
 
-.item-notifikasi:last-child {
-    border-bottom: none;
-  }
+/* Daftar notifikasi */
+.daftar-notifikasi {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+.notifikasi-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f1f1f1;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.notifikasi-item:hover {
+  background-color: #f8f9fa;
+}
+
+.notifikasi-item.baru {
+  background-color: #f0f7ff;
+}
+
+.notifikasi-item .waktu {
+  font-size: 0.75rem;
+  color: #6c757d;
+  margin-top: 5px;
+}
+
+.notifikasi-kosong {
+  text-align: center;
+  padding: 30px 15px;
+  color: #6c757d;
+}
+
+.notifikasi-kosong i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #dee2e6;
+}
+
+/* Footer dropdown */
+.dropdown-footer {
+  padding: 12px 15px;
+  border-top: 1px solid #e9ecef;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.lihat-semua {
+  color: #0d6efd;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.lihat-semua:hover {
+  text-decoration: underline;
+}
+
+/* Animasi */
+@keyframes lonceng-bergetar {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  75% { transform: rotate(-15deg); }
+}
+
+.lonceng-notifikasi.bergetar {
+  animation: lonceng-bergetar 0.5s ease-in-out;
+}
