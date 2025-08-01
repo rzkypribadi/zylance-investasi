@@ -1,1 +1,154 @@
+/* Gaya untuk halaman login dan register */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
 
+.logo-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-container .logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.logo-container h1 {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.auth-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--gray-color);
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.admin-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.admin-link a {
+    font-size: 0.8rem;
+    color: var(--gray-color);
+    text-decoration: none;
+}
+
+.admin-link a:hover {
+    color: var(--dark-color);
+}
+
+/* CAPTCHA */
+.captcha-container {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.captcha-box {
+    flex: 1;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px dashed #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--dark-color);
+    user-select: none;
+}
+
+.btn-captcha {
+    background-color: var(--light-color);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-captcha:hover {
+    background-color: #ddd;
+}
+
+.captcha-container input {
+    flex: 1;
+}
+
+/* Admin auth */
+.admin-auth {
+    max-width: 350px;
+}
+
+.admin-auth .logo-container h1 {
+    font-size: 1.3rem;
+}
+
+/* Animasi background */
+.auth-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    z-index: -1;
+}
+
+.auth-container {
+    position: relative;
+    z-index: 1;
+}
