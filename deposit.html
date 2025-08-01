@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Meta informasi dasar -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zylance Investasi</title>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Sidebar navigasi -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="images/logo.png" alt="Zylance Investasi" class="logo">
+            <h3>Zylance Investasi</h3>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li class="active"><a href="deposit.html"><i class="fas fa-wallet"></i> Deposit</a></li>
+            <li><a href="withdraw.html"><i class="fas fa-money-bill-wave"></i> Withdraw</a></li>
+            <li><a href="invest.html"><i class="fas fa-chart-line"></i> Investasi</a></li>
+            <li><a href="#" id="liveChatBtn"><i class="fas fa-comments"></i> Live Chat</a></li>
+            <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
 
+    <!-- Konten utama -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <h2>Deposit</h2>
+                <p class="welcome-text">Tambah saldo akun Anda</p>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="userBalance">Rp 0</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Form deposit -->
+        <section class="deposit-section">
+            <div class="deposit-container">
+                <h3><i class="fas fa-coins"></i> Pilih Nominal Deposit</h3>
+                <p>Minimal deposit: Rp 150.000</p>
+                
+                <div class="amount-options">
+                    <button class="amount-option" data-amount="150000">Rp 150.000</button>
+                    <button class="amount-option" data-amount="200000">Rp 200.000</button>
+                    <button class="amount-option" data-amount="250000">Rp 250.000</button>
+                    <button class="amount-option" data-amount="300000">Rp 300.000</button>
+                    <button class="amount-option" data-amount="350000">Rp 350.000</button>
+                    <button class="amount-option" data-amount="400000">Rp 400.000</button>
+                    <button class="amount-option" data-amount="450000">Rp 450.000</button>
+                    <button class="amount-option" data-amount="500000">Rp 500.000</button>
+                    <button class="amount-option" data-amount="550000">Rp 550.000</button>
+                </div>
+                
+                <div class="custom-amount">
+                    <h4>Atau masukkan nominal custom</h4>
+                    <div class="input-group">
+                        <span>Rp</span>
+                        <input type="number" id="customAmount" placeholder="Minimal 150.000">
+                    </div>
+                </div>
+                
+                <button class="btn-primary" id="proceedDeposit">Lanjutkan Deposit</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal konfirmasi deposit -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Konfirmasi Deposit</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="depositForm">
+                    <div class="form-group">
+                        <label for="depositName">Nama Lengkap</label>
+                        <input type="text" id="depositName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="depositEmail">Email</label>
+                        <input type="email" id="depositEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="depositPhone">Nomor WhatsApp</label>
+                        <input type="tel" id="depositPhone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="depositCaptcha">CAPTCHA</label>
+                        <div class="captcha-container">
+                            <div class="captcha-box" id="depositCaptchaText"></div>
+                            <button type="button" class="btn-captcha" id="refreshDepositCaptcha">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <input type="text" id="depositCaptcha" required placeholder="Masukkan kode CAPTCHA">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Konfirmasi Deposit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skrip JavaScript -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/deposit.js"></script>
+</body>
+</html>
